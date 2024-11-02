@@ -1,0 +1,18 @@
+   version: '3.8'
+
+   services:
+      bigtop:
+         build:
+            context: .
+            dockerfile: Dockerfile
+         volumes:
+            - bigtop_dir:/bigtop
+         environment:
+            - MAVEN_HOME=/usr/local/maven
+            - JAVA_HOME=/usr/lib/jvm/temurin-8-jdk-amd64
+            - ANT_HOME=/usr/local/ant
+            - GRADLE_HOME=/usr/local/gradle
+            - PATH=/usr/local/maven/bin:/usr/local/ant/bin:/usr/local/gradle/bin:$PATH
+            - GRADLE_OPTS="-Dorg.gradle.daemon=true"
+   volumes:
+     bigtop_dir:
